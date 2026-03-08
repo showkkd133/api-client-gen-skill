@@ -1,0 +1,25 @@
+{
+  "name": "api-client-gen",
+  "version": "1.0.0",
+  "description": "Generate TypeScript fetch/axios API client + types + React Query/SWR hooks from OpenAPI/Swagger spec.",
+  "author": "showkkd133",
+  "license": "MIT",
+  "homepage": "https://github.com/showkkd133/api-client-gen-skill",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/showkkd133/api-client-gen-skill.git"
+  },
+  "keywords": [
+    "openapi",
+    "swagger",
+    "typescript",
+    "api-client",
+    "react-query",
+    "swr",
+    "code-generation"
+  ],
+  "categories": [
+    "developer-tools",
+    "code-generation"
+  ]
+}

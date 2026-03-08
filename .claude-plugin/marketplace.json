@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    {
+      "name": "api-client-gen",
+      "version": "1.0.0",
+      "path": ".",
+      "description": "Generate TypeScript fetch/axios API client + types + React Query/SWR hooks from OpenAPI/Swagger spec"
+    }
+  ]
+}
