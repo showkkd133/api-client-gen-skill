@@ -1,3 +1,17 @@
+---
+name: api-client-gen
+description: 从 OpenAPI/Swagger 规范自动生成 TypeScript API 客户端（类型定义、fetch/axios 客户端、React Query/SWR hooks）
+triggers:
+  - "生成 api client"
+  - "generate api client"
+  - "openapi client"
+  - "swagger client"
+  - "从 swagger 生成"
+  - "generate sdk"
+  - "api codegen"
+  - "从 openapi 生成类型"
+---
+
 # Skill: OpenAPI/Swagger TypeScript Client 生成
 
 从 Swagger/OpenAPI 规范自动生成 TypeScript API 客户端，包括类型定义、fetch/axios 客户端、React Query hooks、SWR hooks。
@@ -300,8 +314,11 @@ const createClient = (config: FetchClientConfig) => {
       headers?: Record<string, string>
     } = {}
   ): Promise<T> => {
-    // Build URL with query params
-    const url = new URL(path, baseUrl)
+    // Build URL with query params — avoid new URL(path, base) which silently
+    // strips the base path (e.g. "https://api.example.com/v1" + "/users"
+    // would lose "/v1"). Use string concatenation instead.
+    const fullUrl = `${baseUrl.replace(/\/$/, '')}${path.startsWith('/') ? path : '/' + path}`
+    const url = new URL(fullUrl)
     if (options.params) {
       Object.entries(options.params).forEach(([key, value]) => {
         if (value !== undefined) {
@@ -412,7 +429,8 @@ const createClient = (config: FetchClientConfig) => {
       headers?: Record<string, string>
     } = {}
   ): Promise<Blob> => {
-    const url = new URL(path, baseUrl)
+    const fullUrl = `${baseUrl.replace(/\/$/, '')}${path.startsWith('/') ? path : '/' + path}`
+    const url = new URL(fullUrl)
     if (options.params) {
       Object.entries(options.params).forEach(([key, value]) => {
         if (value !== undefined) {

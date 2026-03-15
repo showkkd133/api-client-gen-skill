@@ -21,5 +21,15 @@
   "categories": [
     "developer-tools",
     "code-generation"
+  ],
+  "triggers": [
+    "生成 api client",
+    "generate api client",
+    "openapi client",
+    "swagger client",
+    "从 swagger 生成",
+    "generate sdk",
+    "api codegen",
+    "从 openapi 生成类型"
   ]
 }
